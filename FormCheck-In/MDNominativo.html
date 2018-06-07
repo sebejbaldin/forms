@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modulo Dati Nominativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
+</head>
+
+<body style="background-color: honeydew">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 id="formTitle">Modulo Dati Nominativo</h2>
+            </div>
+            <div class="col-sm-1 col-sm-offset-4">
+                <button type="button" id="itLang" class="btn btn-default btn-block"><span class="flag-icon flag-icon-it"></span></button>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" id="en_USLang" class="btn btn-default btn-block"><span class="flag-icon flag-icon-us"></span></button>
+            </div>
+        </div>
+        <br>
+        <form action="" method="POST" id="anagrafica">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label" for="surname" id="surnameL">Cognome</label>
+                        <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label" for="nome" id="nomeL">Nome</label>
+                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="gender" id="genderL">Genere</label>
+                        <select class="form-control" id="gender">
+                            <option value="0">Maschio</option>
+                            <option value="1">Femmina</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="birthPlace" id="birthPlaceL">Luogo di Nascita</label>
+                        <input type="text" class="form-control" id="birthPlace" aria-describedby="birthPlace">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
+                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
+                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship">
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
+                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row" id="toChange">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
+                        <input type="text" class="form-control" id="city" aria-describedby="city">
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        <label class="control-label" for="address" id="addressL">Indirizzo di Casa</label>
+                        <input type="text" class="form-control" id="address" aria-describedby="address">
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
+                        <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="control-label" for="documentType" id="documentTypeL">Tipo Documento</label>
+                        <select class="form-control" id="documentType" aria-describedby="documentType">
+                            <option value="0">Carta d'Identità</option>
+                            <option value="1">Carta d'Identità Elettr.</option>
+                            <option value="2">Passaporto</option>
+                            <option value="3">Patente di Guida</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="documentNumber" id="documentNumberL">N. Documento</label>
+                        <input type="text" class="form-control" id="documentNumber" aria-describedby="documentNumber">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="control-label" for="documentEmissPlace" id="documentEmissPlaceL">Luogo di Emissione</label>
+                        <input type="text" class="form-control" id="documentEmissPlace" aria-describedby="documentEmissPlace">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary btn-block" id="buttonSubmit">
+                        <span class="glyphicon glyphicon-floppy-disk"></span> Salva</button>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn btn-primary btn-block" id="randB">
+                        rand
+                    </button>
+                </div>
+            </div>
+        </form>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../it.js"></script>
+        <script src="../en_US.js"></script>
+        <script src="check-in.js"></script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Modulo Riservazione</h2>
+            </div>
+        </div>
+        <br>
+        <form>
+            <div class="row">
+                <div class="col-sm-12">
+                    <label for="code">Codice</label>
+                    <input type="text" class="form-control" id="code" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="riferimento">Riferimento</label>
+                    <input type="text" class="form-control" id="riferimento" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-8">
+                    <label for="nominativo">Nominativo</label>
+                    <input type="text" class="form-control" id="nominativo" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-8">
+                    <label for="firstDay">In</label>
+                    <input type="date" class="form-control" id="firstDay" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-2">
+                    <label for="nDay">N. Giorni</label>
+                    <input type="number" class="form-control" id="nDay" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-2">
+                    <label for="room">Stanza</label>
+                    <input type="text" class="form-control" id="room" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="invited"> Invito
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Soll1"> Soll1
+                        </label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="locked"> Bloccato
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Soll2"> Soll2
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-save"></span> Salva</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
