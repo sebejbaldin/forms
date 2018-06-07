@@ -31,6 +31,7 @@ $(function () {
 })
 
 function loadLanguage() {
+    var option = [];
     if (lang.language === "it") {
         document.title = "Modulo Dati Nominativo";
         $('#formTitle').text('Modulo Dati Nominativo');
@@ -40,15 +41,15 @@ function loadLanguage() {
     }
     $("#documentTypeL").text(lang.documentType.title);
     $('#documentType').empty();
-    for (let x = 0; x < lang.documentType.options.lenght; x++) {
-        $('#documentType').append(`<option value="${x}">${lang.documentType.options[x]}</option>`)
+    for (let x = 0; x < getArrayLength(lang.documentType.options); x++) {
+        $('#documentType').append(`<option value="${x}">${lang.documentType.options[x]}</option>`);
     };
     $("#nomeL").text(lang.name);
     $('#surnameL').text(lang.surname);
     $('#genderL').text(lang.gender.title);
     $('#gender').empty();
-    for (let x = 0; x < lang.gender.options.lenght; x++) {
-        $('#gender').append(`<option value="${x}">${lang.gender.options[x]}</option>`)
+    for (let x = 0; x < getArrayLength(lang.gender.options); x++) {
+        $('#gender').append(`<option value="${x}">${lang.gender.options[x]}</option>`);
     };
     $('#birthPlaceL').text(lang.birthPlace);
     $('#birthDateL').text(lang.birthDate);
@@ -85,18 +86,34 @@ btn.on("click", (event) => {
 });
 
 $('#randB').click((event) => {
-
+    let objList = []
+    list.each((i, obj) => {
+        objList.push($(obj).val());
+    })
+    alert(JSON.stringify(objList));
 })
 
 $('#en_USLang').click((event) => {
-    lang = enUS;
-    loadLanguage();
+    if (lang.language !== "en-US") {
+        lang = enUS;
+        loadLanguage();
+    }
 })
 
 $('#itLang').click((event) => {
-    lang = it;
-    loadLanguage();
+    if (lang.language !== "it") {
+        lang = it;
+        loadLanguage();
+    }
 })
+
+function getArrayLength(array) {
+    let x = 0;
+    while (array[x] != undefined && array[x] != null) {
+        x++;
+    }
+    return x;
+}
 
 /* $('form input').change((event) => {
     $(this).parent().removeClass('has-error');
