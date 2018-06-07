@@ -2,7 +2,7 @@ var docT = $("#documentType");
 var btn = $("#buttonSubmit");
 var nome = $("#nOme");
 var surname = $('#surname');
-var sex = $('#sex');
+var gender = $('#gender');
 var birthPlace = $('#birthPlace');
 var birthDate = $('#birthDate');
 var nationality = $('#nationality');
@@ -14,8 +14,6 @@ var documentNum = $('#documentNumber');
 var documentPlace = $('#documentEmissPlace');
 var list = $(':input').not('button');
 var lang;
-//var lang = navigator.language;
-//alert(lang);
 
 $(function () {
     //alert(navigator.language);
@@ -24,14 +22,12 @@ $(function () {
     else if (navigator.language === "en-US") {
         lang = enUS;
         //alert('Lingua inglese caricata');
-    }
-    else
+    } else
         lang = enUS;
     loadLanguage();
 })
 
 function loadLanguage() {
-    var option = [];
     if (lang.language === "it") {
         document.title = "Modulo Dati Nominativo";
         $('#formTitle').text('Modulo Dati Nominativo');
@@ -72,17 +68,18 @@ btn.on("click", (event) => {
             $(obj).parent().removeClass('has-error');
         }
     })
-    if (!isValid)
+    if (!isValid) {
         event.preventDefault();
-    list.on("change", (event) => {
-        list.each((i, obj) => {
-            if ($(obj).val() === "") {
-                $(obj).parent().addClass('has-error');
-            } else {
-                $(obj).parent().removeClass('has-error');
-            }
+        list.on("change", (event) => {
+            list.each((i, obj) => {
+                if ($(obj).val() === "") {
+                    $(obj).parent().addClass('has-error');
+                } else {
+                    $(obj).parent().removeClass('has-error');
+                }
+            })
         })
-    })
+    }
 });
 
 $('#randB').click((event) => {
@@ -114,12 +111,3 @@ function getArrayLength(array) {
     }
     return x;
 }
-
-/* $('form input').change((event) => {
-    $(this).parent().removeClass('has-error');
-    alert(event.target.att)
-}) */
-
-/* $('.has-error').change(() => {
-    this.removeClass('has-error');
-}) */
