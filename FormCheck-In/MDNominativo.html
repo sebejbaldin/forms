@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../FormCheck-In/style.css" />
 </head>
 
 <body style="background-color: honeydew">
@@ -17,14 +18,18 @@
                 <h2 id="formTitle">Modulo Dati Nominativo</h2>
             </div>
             <div class="col-sm-1 col-sm-offset-4">
-                <button type="button" id="itLang" class="btn btn-default btn-block"><span class="flag-icon flag-icon-it"></span></button>
+                <button type="button" id="itLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-it"></span>
+                </button>
             </div>
             <div class="col-sm-1">
-                <button type="button" id="en_USLang" class="btn btn-default btn-block"><span class="flag-icon flag-icon-us"></span></button>
+                <button type="button" id="en_USLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-us"></span>
+                </button>
             </div>
         </div>
         <br>
-        <form action="" method="POST" id="anagrafica">
+        <form autocomplete="off" action="" method="POST" id="anagrafica">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -71,7 +76,7 @@
                         <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship">
                     </div>
                 </div>
-                <div class="col-sm-5">
+                <div class="col-sm-5 autocomplete">
                     <div class="form-group">
                         <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
                         <input type="text" class="form-control" id="residenceState" aria-describedby="residence">
@@ -129,7 +134,9 @@
             <div class="row">
                 <div class="col-sm-3">
                     <button type="submit" class="btn btn-primary btn-block" id="buttonSubmit">
-                        <span class="glyphicon glyphicon-floppy-disk"></span> Salva</button>
+                        <span class="glyphicon glyphicon-floppy-disk"></span> 
+                        Salva
+                    </button>
                 </div>
                 <div class="col-sm-3">
                     <button type="button" class="btn btn-primary btn-block" id="randB">
@@ -139,6 +146,8 @@
             </div>
         </form>
         <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../jquery-ui-1.12.1/jquery-ui.js"></script>
+        <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
         <script src="../it.js"></script>
         <script src="../en_US.js"></script>
         <script src="check-in.js"></script>

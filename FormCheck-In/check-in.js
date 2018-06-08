@@ -14,6 +14,9 @@ var documentNum = $('#documentNumber');
 var documentPlace = $('#documentEmissPlace');
 var list = $(':input').not('button');
 var lang;
+var inputLenght = 0;
+
+$(document).off('.data-api');
 
 $(function () {
     //alert(navigator.language);
@@ -26,6 +29,105 @@ $(function () {
         lang = enUS;
     loadLanguage();
 })
+
+/* 
+    $('#residenceState').autocomplete({
+        source: onlinecheckin.azurewebsites.net/istes/autocompleteall,
+        source: onlinecheckin.azurewebsites.net/istes/autocompletecomuni,
+        source: onlinecheckin.azurewebsites.net/istes/autocompletestati
+    });
+    http://onlinecheckin.azurewebsites.net/istes/autocompleteall?term=pro 
+*/
+residenceState.on('input', () => {
+    autocomplete(residenceState, 'http://onlinecheckin.azurewebsites.net/istes/autocompletestati');
+})
+
+function atome(ref, data) {
+    let elem = $('<div></div>');
+    elem.attr('id', ref.attr('id') + "autocomplete-list");
+    elem.attr('class', 'autocomplete-items');
+    ref.parent().append(elem);
+    for (let x = 0; x < getArrayLength(data); x++) {
+        let item = $('<div></div>');
+        item.append(`<strong>${data[x].substr(0, inputLenght)}</strong>${data[x].substr(inputLenght)}`);
+        //item.append(data[x]);
+        item.append(`<input type="hidden" value="${data[x]}">`);
+        item.on('click', () => {
+            ref.val(item.children('input').val());
+            closeAllLists();
+        })
+        elem.append(item);
+    }
+
+    function closeAllLists(elmnt) {
+        //close all autocomplete lists in the document,
+        //except the one passed as an argument:
+        let x = $(".autocomplete-items");
+        if (elmnt == null && elmnt == undefined) {
+            x.remove();
+        } else {
+            for (var i = 0; i < getArrayLength(x); i++) {
+                if (elmnt != x[i] && elmnt != residenceState) {
+                    x[i].parent().remove(x[i]);
+                }
+            }
+        }
+    }
+    //execute a function when someone clicks in the document:
+    $('*').on("click", function () {
+        closeAllLists();
+    });
+}
+
+
+function autocomplete(inputRef, url) {
+    inputLenght = inputRef.val().length;
+    if (inputLenght >= 2) {
+        $.ajax(url + "?term=" + inputRef.val())
+        .done(function (list) {
+            let elem = $('<div></div>');
+            elem.attr('id', inputRef.attr('id') + "autocomplete-list");
+            elem.attr('class', 'autocomplete-items');
+            inputRef.parent().append(elem);
+            for (let x = 0; x < getArrayLength(list); x++) {
+                let item = $('<div></div>');
+                item.append(`<strong>${list[x].substr(0, inputLenght)}</strong>${list[x].substr(inputLenght)}`);
+                //item.append(list[x]);
+                item.append(`<input type="hidden" value="${list[x]}">`);
+                item.on('click', () => {
+                    inputRef.val(item.children('input').val());
+                    closeAllLists();
+                })
+                elem.append(item);
+            }
+        })
+        .fail(function () {
+            atome(inputRef, ["AMALFI (SA)","AMANDOLA (AP)","AMANTEA (CS)","AMARO (UD)","AMARONI (CZ)","AMASENO (FR)","AMATO (CZ)","AMATRICE (RI)","AMBIVERE (BG)","AMBLAR (TN)","AMEGLIA (SP)","AMELIA (TR)","AMENDOLARA (CS)","AMENO (NO)","AMOROSI (BN)","AMPEZZO (UD)"]);
+        })
+        .always(function () {
+
+        });
+    }
+
+    function closeAllLists(elmnt) {
+        //close all autocomplete lists in the document,
+        //except the one passed as an argument:
+        let x = $(".autocomplete-items");
+        if (elmnt == null && elmnt == undefined) {
+            x.remove();
+        } else {
+            for (var i = 0; i < getArrayLength(x); i++) {
+                if (elmnt != x[i] && elmnt != residenceState) {
+                    x[i].parent().remove(x[i]);
+                }
+            }
+        }
+    }
+    //execute a function when someone clicks in the document:
+    $('*').on("click", function () {
+        closeAllLists();
+    });
+}
 
 function loadLanguage() {
     if (lang.language === "it") {
