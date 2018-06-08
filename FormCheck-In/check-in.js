@@ -12,34 +12,27 @@ var address = $('#address');
 var addressNum = $('#addressNumber');
 var documentNum = $('#documentNumber');
 var documentPlace = $('#documentEmissPlace');
-var list = $(':input').not('button');
+var inList = $(':input').not('button');
 var lang;
 var inputLenght = 0;
-var currentFocus = 0;
+var currentFocus = -1;
+var onlyITA = null;
 
-$(document).off('.data-api');
+//$(document).off('.data-api');
 
 $(function () {
     //alert(navigator.language);
-    if (navigator.language === "it")
+    if (navigator.language === "it") 
         lang = it;
     else if (navigator.language === "en-US") {
         lang = enUS;
+        onlyITA = $('#toToggle').detach();
+        inList = $(':input').not('button');
         //alert('Lingua inglese caricata');
     } else
         lang = enUS;
     loadLanguage();
 })
-
-/* 
-    $('#residenceState').autocomplete({
-        source: onlinecheckin.azurewebsites.net/istes/autocompleteall,
-        source: onlinecheckin.azurewebsites.net/istes/autocompletecomuni,
-        source: onlinecheckin.azurewebsites.net/istes/autocompletestati
-    });
-    http://onlinecheckin.azurewebsites.net/istes/autocompleteall?term=pro 
-*/
-
 
 autocomplete(residenceState, 'http://localhost:8080/istes/autocompletestati');
 autocomplete(city, 'http://localhost:8080/istes/autocompletecomuni');
@@ -66,14 +59,20 @@ function atome(ref, data) {
 
 residenceState.on('change', () => {
     if (residenceState.val().toUpperCase() !== 'ITALIA') {
-        $('#toToggle').hide();
+        if (!onlyITA) {
+            onlyITA = $('#toToggle').detach();
+            inList = $(':input').not('button');
+        }
     } else {
-        $('#toToggle').show();
+        if(onlyITA) {
+            $('#dependTo').after(onlyITA);
+            inList = $(':input').not('button');
+        }
+        onlyITA = null;
     }
 })
 
 function autocomplete(inputRef, urlReq, charMin) {
-
     inputRef.on('input', () => {
         inputLenght = inputRef.val().length;
         if (inputLenght < 1) {
@@ -143,6 +142,8 @@ function autocomplete(inputRef, urlReq, charMin) {
             if (currentFocus > -1) {
                 /*and simulate a click on the "active" item:*/
                 if (x) x.get(currentFocus).click();
+            } else if (currentFocus === -1) {
+                if (x) x.get(0).click();
             }
         }
     });
@@ -155,7 +156,7 @@ function autocomplete(inputRef, urlReq, charMin) {
         if (currentFocus >= x.length) currentFocus = 0;
         if (currentFocus < 0) currentFocus = (x.length - 1);
         /*add class "autocomplete-active":*/
-        $(x.get(x)).addClass('autocomplete-active');
+        $(x.get(currentFocus)).addClass('autocomplete-active');
     }
 
     function removeActive(x) {
@@ -172,7 +173,7 @@ function autocomplete(inputRef, urlReq, charMin) {
         let x = $(".autocomplete-items");
         if (elmnt == null && elmnt == undefined) {
             x.remove();
-            currentFocus = 0;
+            currentFocus = -1;
         } /* else {
             for (var i = 0; i < getArrayLength(x); i++) {
                 if (elmnt != x[i] && elmnt != residenceState) {
@@ -220,7 +221,7 @@ function loadLanguage() {
 
 btn.on("click", (event) => {
     let isValid = true;
-    list.each((i, obj) => {
+    inList.each((i, obj) => {
         if ($(obj).val() === "") {
             isValid = false;
             $(obj).parent().addClass('has-error');
@@ -230,8 +231,8 @@ btn.on("click", (event) => {
     })
     if (!isValid) {
         event.preventDefault();
-        list.on("change", (event) => {
-            list.each((i, obj) => {
+        inList.on("change", (event) => {
+            inList.each((i, obj) => {
                 if ($(obj).val() === "") {
                     $(obj).parent().addClass('has-error');
                 } else {
@@ -244,7 +245,7 @@ btn.on("click", (event) => {
 
 $('#randB').click((event) => {
     let objList = []
-    list.each((i, obj) => {
+    inList.each((i, obj) => {
         objList.push($(obj).val());
     })
     alert(JSON.stringify(objList));
