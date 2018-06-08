@@ -28,6 +28,6 @@
   }
   .autocomplete-active {
     /*when navigating through the items using the arrow keys:*/
-    background-color: DodgerBlue !important;
-    color: #ffffff;
+    background-color: red;
+    color: #18bdaf;
   }
