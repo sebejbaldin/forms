@@ -4,8 +4,8 @@ var it = {
     surname: "Cognome",
     birthDate: "Data di Nascita",
     birthPlace: "Luogo di Nascita",
-    gender: { 
-        title:"Genere",
+    gender: {
+        title: "Genere",
         options: [
             "Maschio",
             "Femmina"
@@ -26,5 +26,14 @@ var it = {
         ]
     },
     documentNumber: "Numero Documento",
-    emissionPlace: "Luogo di Emissione"
+    emissionPlace: "Luogo di Emissione",
+    prenotationCode: "Codice Prenotazione",
+    struct: "Struttura/Stanza",
+    prenotationDate: {
+        title: "Prenotato",
+        labels: [
+            "Da",
+            "A"
+        ]
+    }
 }

@@ -26,5 +26,14 @@ var enUS = {
         ]
     },
     documentNumber: "Document Number",
-    emissionPlace: "Emission Place"
+    emissionPlace: "Emission Place",
+    prenotationCode: "Prenotation Code",
+    struct: "Structure/Room",
+    prenotationDate: {
+        title: "Prenotated",
+        labels: [
+            "From",
+            "To"
+        ]
+    }
 }
