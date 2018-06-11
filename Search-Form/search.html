@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Check-In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../customStyle.css" />
+</head>
+
+<body style="background-color: honeydew">
+    <div class="container">
+        <h2>Check-In</h2>
+        <br>
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="cod_pre">Codice Prenotazione</label>
+                    <input type="text" class="form-control" id="cod_pre" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-md-6">
+                    <label for="struct">Struttura/Stanza</label>
+                    <!-- Forse un input con autocomplete è meglio? -->
+                    <select class="form-control" id="struct">
+                        <option>Eleonora B 62</option>
+                        <option>Bread v24</option>
+                        <option>Volano B2</option>
+                        <option>Eleonora B 84</option>
+                        <option>Eleonora B 62</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <p style="font-weight: bold; font-size: large">Prenotato</p>
+                </div>
+                <div class="col-md-6">
+                    <label for="fromDate">Da</label>
+                    <input type="date" class="form-control" id="fromDate" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-md-6">
+                    <label for="toDate">A</label>
+                    <input type="date" class="form-control" id="toDate" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="surname">Cognome</label>
+                    <input type="text" class="form-control" id="surname" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-md-6">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" aria-describedby="basic-addon3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                    <!--    <div class="col-xs-2">
+                                <div id="loadingCircle"></div>
+                            </div> -->
+                <div class="col-xs-3 col-xs-offset-9">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cerca
+                    </button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
