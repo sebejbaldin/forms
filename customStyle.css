@@ -1,0 +1,37 @@
+
+@keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to { 
+        -webkit-transform: rotate(360deg);
+    }
+}
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to { 
+        -webkit-transform: rotate(360deg);
+    }
+}
+#loadingCircle {
+    border: 1px solid #000;
+    border-right: 0;
+    border-bottom: 0;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    height: 25px;
+    width: 25px;
+    margin: 2px;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+    -webkit-animation-name: rotate; 
+    animation-name: rotate; 
+    -webkit-animation-duration: 1.0s; 
+    animation-duration: 1.0s; 
+    -webkit-animation-iteration-count:  infinite;
+    animation-iteration-count:  infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+} 
