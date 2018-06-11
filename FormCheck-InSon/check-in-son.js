@@ -14,11 +14,11 @@ $(function () {
 
 function loadLanguage() {
     if (lang.language === "it") {
-        document.title = "Modulo Dati Nominativo";
-        $('#formTitle').text('Modulo Dati Nominativo');
+        document.title = "Modulo Dati Altri";
+        $('#formTitle').text('Modulo Dati Altri');
     } else if (lang.language === "en-US") {
-        document.title = "Nominative Module";
-        $('#formTitle').text('Nominative Module');
+        document.title = "Other Data Module";
+        $('#formTitle').text('Other Data Module');
     }
     $("#nomeL").text(lang.name);
     $('#surnameL').text(lang.surname);
