@@ -4,73 +4,91 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Check-In</title>
+    <title>Modulo di Ricerca</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../customStyle.css" />
 </head>
 
 <body style="background-color: honeydew">
     <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 id="formTitle">Modulo Dati Nominativo</h2>
+            </div>
+            <div class="col-sm-1 col-sm-offset-4">
+                <button type="button" id="itLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-it"></span>
+                </button>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" id="en_USLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-us"></span>
+                </button>
+            </div>
+        </div>
+        <br>
         <h2>Check-In</h2>
         <br>
         <form action="" method="POST">
             <div class="row">
                 <div class="col-md-6">
-                    <label for="cod_pre">Codice Prenotazione</label>
+                    <label for="cod_pre" id="cod_preL">Codice Prenotazione</label>
                     <input type="text" class="form-control" id="cod_pre" aria-describedby="basic-addon3">
                 </div>
                 <div class="col-md-6">
-                    <label for="struct">Struttura/Stanza</label>
+                    <label for="struct" id="structL">Struttura/Stanza</label>
                     <!-- Forse un input con autocomplete è meglio? -->
                     <select class="form-control" id="struct">
-                        <option>Eleonora B 62</option>
-                        <option>Bread v24</option>
-                        <option>Volano B2</option>
-                        <option>Eleonora B 84</option>
-                        <option>Eleonora B 62</option>
+                        <option>Edificio B 62</option>
                     </select>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-12">
-                    <p style="font-weight: bold; font-size: large">Prenotato</p>
+                    <p style="font-weight: bold; font-size: large" id="prenotationL">Prenotato</p>
                 </div>
                 <div class="col-md-6">
-                    <label for="fromDate">Da</label>
+                    <label for="fromDate" id="fromDateL">Da</label>
                     <input type="date" class="form-control" id="fromDate" aria-describedby="basic-addon3">
                 </div>
                 <div class="col-md-6">
-                    <label for="toDate">A</label>
+                    <label for="toDate" id="toDateL">A</label>
                     <input type="date" class="form-control" id="toDate" aria-describedby="basic-addon3">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-6">
-                    <label for="surname">Cognome</label>
+                    <label for="surname" id="surnameL">Cognome</label>
                     <input type="text" class="form-control" id="surname" aria-describedby="basic-addon3">
                 </div>
                 <div class="col-md-6">
-                    <label for="name">Nome</label>
+                    <label for="name" id="nameL">Nome</label>
                     <input type="text" class="form-control" id="name" aria-describedby="basic-addon3">
                 </div>
             </div>
             <br>
             <div class="row">
-                    <!--    <div class="col-xs-2">
+                <!--    <div class="col-xs-2">
                                 <div id="loadingCircle"></div>
                             </div> -->
                 <div class="col-xs-3 col-xs-offset-9">
-                    <button type="submit" class="btn btn-primary btn-block">
+                    <button type="submit" class="btn btn-primary btn-block" id="buttonSubmit">
                         <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Cerca
                     </button>
                 </div>
-                
+
             </div>
         </form>
     </div>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../util.js"></script>
+    <script src="../it.js"></script>
+    <script src="../en_US.js"></script>
+    <script src="search.js"></script>
 </body>
 
 </html>
