@@ -70,6 +70,8 @@ $(function () {
     $('#buttonSubmit').on("click", (event) => {
         if (!validateForm(inList)) {
             event.preventDefault();
+        } else {
+            
         }
     });
 

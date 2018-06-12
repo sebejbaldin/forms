@@ -7,72 +7,105 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../customStyle.css" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+    <script src="../util.js"></script>
+    <script src="language.js"></script>
+    <script src="change.js"></script>
 </head>
 
-<body>
+<body style="background-color: aliceblue">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <h2>Modulo Riservazione</h2>
+            <div class="col-sm-6">
+                <h2 id="formTitle">Modulo Riservazione</h2>
+            </div>
+            <div class="col-sm-1 col-sm-offset-4">
+                <button type="button" id="itLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-it"></span>
+                </button>
+            </div>
+            <div class="col-sm-1">
+                <button type="button" id="en_USLang" class="btn btn-default btn-block">
+                    <span class="flag-icon flag-icon-us"></span>
+                </button>
             </div>
         </div>
         <br>
-        <form>
+        <form name="myForm">
             <div class="row">
-                <div class="col-sm-12">
-                    <label for="code">Codice</label>
-                    <input type="text" class="form-control" id="code" aria-describedby="basic-addon3">
+                <div class="col-sm-7">
+                    <label for="code" id="codeL">Codice</label>
+                    <input type="text" class="form-control" id="code" aria-describedby="basic-addon3" readonly>
                 </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-4">
-                    <label for="riferimento">Riferimento</label>
+                <div class="col-sm-5">
+                    <label for="riferimento" id="riferimentoL">Riferimento</label>
                     <input type="text" class="form-control" id="riferimento" aria-describedby="basic-addon3">
                 </div>
-                <div class="col-sm-8">
-                    <label for="nominativo">Nominativo</label>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="nominativo" id="nominativoL">Nominativo</label>
                     <input type="text" class="form-control" id="nominativo" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-6">
+                    <label for="email" id="emailL">Email</label>
+                    <input type="email" class="form-control" id="email">
                 </div>
             </div>
             <br>
             <div class="row">
-                <div class="col-sm-8">
-                    <label for="firstDay">In</label>
+                <div class="col-sm-3">
+                    <label for="firstDay" id="firstDayL">In</label>
                     <input type="date" class="form-control" id="firstDay" aria-describedby="basic-addon3">
                 </div>
                 <div class="col-sm-2">
-                    <label for="nDay">N. Giorni</label>
+                    <label for="nDay" id="nDayL">N. Giorni</label>
                     <input type="number" class="form-control" id="nDay" aria-describedby="basic-addon3">
                 </div>
-                <div class="col-sm-2">
-                    <label for="room">Stanza</label>
+                <div class="col-sm-3">
+                    <label for="room" id="roomL">Stanza</label>
                     <input type="text" class="form-control" id="room" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-2">
+                    <label for="room" id="personNumL">N. Persone</label>
+                    <input type="number" class="form-control" id="PersonNum" aria-describedby="basic-addon3">
+                </div>
+                <div class="col-sm-2">
+                    <label for="room" id="langL">Lingua</label>
+                    <input type="text" class="form-control" id="lang" aria-describedby="basic-addon3">
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-sm-2">
                     <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="invited"> Invito
+                        <label id="invitedL">
+                            <input type="checkbox" value="invited">
+                            <p class="lab">Invito</p>
                         </label>
                     </div>
                     <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Soll1"> Soll1
+                        <label id="Soll1L">
+                            <input type="checkbox" value="Soll1">
+                            <p class="lab">Soll1</p>
                         </label>
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="locked"> Bloccato
+                        <label id="lockedL">
+                            <input type="checkbox" value="locked">
+                            <p class="lab">Bloccato</p>
                         </label>
                     </div>
                     <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="Soll2"> Soll2
+                        <label id="Soll2L">
+                            <input type="checkbox" value="Soll2">
+                            <p class="lab">Soll2</p>
                         </label>
                     </div>
                 </div>

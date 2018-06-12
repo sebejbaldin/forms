@@ -1,3 +1,31 @@
+function submitForm(list) {
+    var formData = [];
+    list.each((i, obj) => {
+        formData.push({
+            id: $(obj).attr('id'),
+            value: $(obj).val()
+        });
+    });
+    alert(JSON.stringify(formData));
+    $.ajax({
+        method: "POST",
+        url: "http://localhost:8080/istes/form",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: {
+            data: formData
+        },
+        crossDomain: true,
+        success: function (data, status, xhr) {
+            alert('data: ' + JSON.stringify(data) + '\nstatus: ' + JSON.stringify(status) + '\nxhr: ' + JSON.stringify(xhr));
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert('jqXHR: ' + JSON.stringify(jqXHR) + '\ntextStatus: ' + textStatus + '\nerrorThrown: ' + errorThrown );
+        }
+
+    });
+}
+
 function autocompleteWithAJAX(inputRef, urlReq, charMin) {
     var inputLenght;
     var currentFocus = -1;

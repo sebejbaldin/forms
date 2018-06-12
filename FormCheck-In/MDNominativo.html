@@ -35,18 +35,18 @@
             </div>
         </div>
         <br>
-        <form autocomplete="off" action="" method="POST" id="anagrafica">
+        <form id="anagrafica">
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="control-label" for="surname" id="surnameL">Cognome</label>
-                        <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3">
+                        <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3" required>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="control-label" for="nome" id="nomeL">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme">
+                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme" required>
                     </div>
                 </div>
             </div>
@@ -64,13 +64,13 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="birthPlace" id="birthPlaceL">Luogo di Nascita</label>
-                        <input type="text" class="form-control" id="birthPlace" aria-describedby="birthPlace">
+                        <input type="text" class="form-control" id="birthPlace" aria-describedby="birthPlace" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
-                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate">
+                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate" required>
                     </div>
                 </div>
             </div>
@@ -79,22 +79,22 @@
                 <div class="col-sm-7">
                     <div class="form-group">
                         <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
-                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship">
+                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship" required>
                     </div>
                 </div>
                 <div class="col-sm-5 autocomplete">
                     <div class="form-group">
                         <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
-                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence">
+                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence" autocomplete="off" required>
                     </div>
                 </div>
             </div>
             <div class="row" id="toToggle">
                 <br>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
-                        <input type="text" class="form-control" id="city" aria-describedby="city">
+                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-sm-7">
@@ -103,7 +103,7 @@
                         <input type="text" class="form-control" id="address" aria-describedby="address">
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <div class="form-group">
                         <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
                         <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
@@ -126,13 +126,13 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="documentNumber" id="documentNumberL">N. Documento</label>
-                        <input type="text" class="form-control" id="documentNumber" aria-describedby="documentNumber">
+                        <input type="text" class="form-control" id="documentNumber" aria-describedby="documentNumber" required>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label" for="documentEmissPlace" id="documentEmissPlaceL">Luogo di Emissione</label>
-                        <input type="text" class="form-control" id="documentEmissPlace" aria-describedby="documentEmissPlace">
+                        <input type="text" class="form-control" id="documentEmissPlace" aria-describedby="documentEmissPlace" required>
                     </div>
                 </div>
             </div>
