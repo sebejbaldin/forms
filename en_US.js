@@ -3,7 +3,8 @@ var enUS = {
     name: "Name",
     surname: "Surname",
     birthDate: "Birth Date",
-    birthPlace: "Birth Place",
+    birthState: "Birth State",
+    birthCity: "Birth City",
     gender: { 
         title:"Gender",
         options: [
@@ -26,7 +27,8 @@ var enUS = {
         ]
     },
     documentNumber: "Document Number",
-    emissionPlace: "Emission Place",
+    docEmissState: "Emission State",
+    docEmissCity: "Emission City",
     prenotationCode: "Prenotation Code",
     struct: "Structure/Room",
     prenotationDate: {

@@ -3,7 +3,8 @@ var it = {
     name: "Nome",
     surname: "Cognome",
     birthDate: "Data di Nascita",
-    birthPlace: "Luogo di Nascita",
+    birthState: "Stato di Nascita",
+    birthCity: "Comune di Nascita",
     gender: {
         title: "Genere",
         options: [
@@ -26,7 +27,8 @@ var it = {
         ]
     },
     documentNumber: "Numero Documento",
-    emissionPlace: "Luogo di Emissione",
+    docEmissState: "Stato di Emissione",
+    docEmissCity: "Città di Emissione",
     prenotationCode: "Codice Prenotazione",
     struct: "Struttura/Stanza",
     prenotationDate: {
