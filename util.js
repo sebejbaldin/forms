@@ -20,7 +20,7 @@ function submitForm(list) {
             alert('data: ' + JSON.stringify(data) + '\nstatus: ' + JSON.stringify(status) + '\nxhr: ' + JSON.stringify(xhr));
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert('jqXHR: ' + JSON.stringify(jqXHR) + '\ntextStatus: ' + textStatus + '\nerrorThrown: ' + errorThrown );
+            alert('jqXHR: ' + JSON.stringify(jqXHR) + '\ntextStatus: ' + textStatus + '\nerrorThrown: ' + errorThrown);
         }
 
     });
@@ -252,6 +252,39 @@ function getArrayLength(array) {
     return x;
 }
 
+function validationEvent(listObj) {
+    listObj.each((i, e) => {
+        if ($(e).val() === "") {
+            is_Valid = false;
+            $(e).parent().addClass('has-error');
+        } else {
+            $(e).parent().attr('class', 'has-success');
+        }
+    });
+    listObj.on("change", () => {
+        if ($(this).val() === "") {
+            $(this).parent().addClass('has-error');
+        } else {
+            $(this).parent().attr('class', 'has-success');
+        }
+    });
+}
+
+function isAllValid(listObj) {
+    let is_Valid = true;
+    //let listNoReq = listObj;
+    let listReq = listObj.filter('[required]');
+    //listNoReq.not(listReq);
+    if (listReq.length !== 0) {
+        
+    }
+
+    /* listNoReq.each((i, e) => {
+        $(e).parent().addClass('has-success');
+    }); */
+    return is_Valid;
+}
+
 function validateForm(listObj) {
     let isValid = true;
     listObj.each((i, obj) => {
@@ -274,4 +307,17 @@ function validateForm(listObj) {
         })
     }
     return isValid;
+}
+
+function firstCharMatch(tryString, toMatch) {
+    let thisMatch = true;
+
+    for (let a = 0; a < tryString.length; a++) {
+        if (tryString[a].toUpperCase() !== toMatch[a].toUpperCase()) {
+            thisMatch = false;
+            break;
+        }
+    }
+
+    return thisMatch;
 }
