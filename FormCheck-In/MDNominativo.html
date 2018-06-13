@@ -37,37 +37,43 @@
         <br>
         <form id="anagrafica">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="surname" id="surnameL">Cognome</label>
                         <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3" required>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="nome" id="nomeL">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme" required>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <br>
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="gender" id="genderL">Genere</label>
-                        <select class="form-control" id="gender">
+                        <select class="form-control" id="gender" required>
                             <option value="0">Maschio</option>
                             <option value="1">Femmina</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div class="row" id="birthThings">
+                <br>
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="birthPlace" id="birthPlaceL">Luogo di Nascita</label>
-                        <input type="text" class="form-control" id="birthPlace" aria-describedby="birthPlace" required>
+                        <label class="control-label" for="birthState" id="birthStateL">Stato di Nascita</label>
+                        <input type="text" class="form-control" id="birthState" aria-describedby="birthState" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="birthCity" id="birthCityL">Comune di Nascita</label>
+                        <input type="text" class="form-control" id="birthCity" aria-describedby="birthCity" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
                         <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate" required>
@@ -94,7 +100,7 @@
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
-                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off">
+                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-7">
@@ -110,12 +116,12 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="docThings">
                 <br>
-                <div class="col-sm-5">
+                <div class="col-sm-3">
                     <div class="form-group">
                         <label class="control-label" for="documentType" id="documentTypeL">Tipo Documento</label>
-                        <select class="form-control" id="documentType" aria-describedby="documentType">
+                        <select class="form-control" id="documentType" aria-describedby="documentType" required>
                             <option value="0">Carta d'Identità</option>
                             <option value="1">Carta d'Identità Elettr.</option>
                             <option value="2">Passaporto</option>
@@ -123,7 +129,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <div class="form-group">
                         <label class="control-label" for="documentNumber" id="documentNumberL">N. Documento</label>
                         <input type="text" class="form-control" id="documentNumber" aria-describedby="documentNumber" required>
@@ -131,8 +137,14 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label class="control-label" for="documentEmissPlace" id="documentEmissPlaceL">Luogo di Emissione</label>
-                        <input type="text" class="form-control" id="documentEmissPlace" aria-describedby="documentEmissPlace" required>
+                        <label class="control-label" for="docEmissState" id="docEmissStateL">Stato di Emissione</label>
+                        <input type="text" class="form-control" id="docEmissState" aria-describedby="docEmissStateL" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="docEmissCity" id="docEmissCityL">Città di Emissione</label>
+                        <input type="text" class="form-control" id="docEmissCity" aria-describedby="docEmissCityL" autocomplete="off" required>
                     </div>
                 </div>
             </div>

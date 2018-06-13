@@ -1,38 +1,97 @@
 $(function () {
     var residenceState = $('#residenceState');
     var city = $('#city');
+    var docState = $('#docEmissState');
+    var docCity = $('#docEmissCity')
+    var birthState = $('#birthState');
+    var birthCity = $('#birthCity');
     var inList = $(':input').not('button');
     var lang;
-    var onlyITA = null;
+    var onlyITA = {
+        residence: null,
+        birth: null,
+        docCity: null
+    };
 
-    //alert(navigator.language);
-    if (navigator.language === "it")
+    autocompleteWithAJAX(residenceState, 'http://localhost:8080/istes/autocompletestati');
+    autocompleteWithAJAX(city, 'http://localhost:8080/istes/autocompletecomuni');
+    autocompleteWithAJAX(docState, 'http://localhost:8080/istes/autocompletestati');
+    autocompleteWithAJAX(docCity, 'http://localhost:8080/istes/autocompletecomuni');
+    autocompleteWithAJAX(birthState, 'http://localhost:8080/istes/autocompletestati');
+    autocompleteWithAJAX(birthCity, 'http://localhost:8080/istes/autocompletecomuni');
+
+    if (navigator.language === "it" || navigator.language === "it-IT")
         lang = it;
-    else if (navigator.language === "en-US") {
+    else if (navigator.language === "en-US" || navigator.language === "en") {
         lang = enUS;
-        onlyITA = $('#toToggle').detach();
+        let temp = $('#docThings > div');
+        onlyITA.residence = $('#toToggle').detach();
+        $($('#birthThings > div').get(2)).attr('class', 'col-sm-6');
+        onlyITA.birth = $($('#birthThings > div').get(1)).detach();
+        onlyITA.docCity = $(temp.get(3)).detach();
+        $(temp.get(0)).attr('class', 'col-sm-4');
+        $(temp.get(1)).attr('class', 'col-sm-4');
+        $(temp.get(2)).attr('class', 'col-sm-4');    
         inList = $(':input').not('button');
-        //alert('Lingua inglese caricata');
     } else
         lang = enUS;
     loadLanguage();
 
-
-    autocompleteWithAJAX(residenceState, 'http://localhost:8080/istes/autocompletestati');
-    autocompleteWithAJAX(city, 'http://localhost:8080/istes/autocompletecomuni');
-
-    residenceState.on('change', () => {
+    residenceState.on('keyup', () => {
         if (residenceState.val().toUpperCase() !== 'ITALIA') {
-            if (!onlyITA) {
-                onlyITA = $('#toToggle').detach();
+            if (!onlyITA.residence) {
+                onlyITA.residence = $('#toToggle').detach();
                 inList = $(':input').not('button');
             }
         } else {
-            if (onlyITA) {
-                $('#dependTo').after(onlyITA);
+            if (onlyITA.residence) {
+                $('#dependTo').after(onlyITA.residence);
+                loadLanguage();
                 inList = $(':input').not('button');
             }
-            onlyITA = null;
+            onlyITA.residence = null;
+        }
+    });
+
+    birthState.on('keyup', () => {
+        let birthThings = $('#birthThings > div');
+        if (birthState.val().toUpperCase() !== 'ITALIA') {
+            if (!onlyITA.birth) {
+                onlyITA.birth = $(birthThings.get(1)).detach();
+                $(birthThings.get(2)).attr('class', 'col-sm-6');
+                inList = $(':input').not('button');
+            }
+        } else {
+            if (onlyITA.birth) {
+                $(birthThings.get(1)).attr('class', 'col-sm-2');
+                $(birthThings.get(0)).after(onlyITA.birth);
+                loadLanguage();
+                inList = $(':input').not('button');
+            }
+            onlyITA.birth = null;
+        }
+    });
+
+    docState.on('keyup', () => {
+        let temp = $('#docThings > div');
+        if (docState.val().toUpperCase() !== 'ITALIA') {
+            if (!onlyITA.docCity) {
+                onlyITA.docCity = $(temp.get(3)).detach();
+                $(temp.get(0)).attr('class', 'col-sm-4');
+                $(temp.get(1)).attr('class', 'col-sm-4');
+                $(temp.get(2)).attr('class', 'col-sm-4');
+                inList = $(':input').not('button');
+            }
+        } else {
+            if (onlyITA.docCity) {
+                $(temp.get(0)).attr('class', 'col-sm-3');
+                $(temp.get(1)).attr('class', 'col-sm-2');
+                $(temp.get(2)).attr('class', 'col-sm-3');
+                $('#docThings').append(onlyITA.docCity);
+                loadLanguage();
+                inList = $(':input').not('button');
+                onlyITA.docCity = null;
+            }
         }
     });
 
@@ -56,7 +115,8 @@ $(function () {
         for (let x = 0; x < getArrayLength(lang.gender.options); x++) {
             $('#gender').append(`<option value="${x}">${lang.gender.options[x]}</option>`);
         };
-        $('#birthPlaceL').text(lang.birthPlace);
+        $('#birthStateL').text(lang.birthState);
+        $('#birthCityL').text(lang.birthCity);
         $('#birthDateL').text(lang.birthDate);
         $('#citizenshipL').text(lang.citizenship);
         $('#residenceStateL').text(lang.countryOfResidence);
@@ -64,11 +124,12 @@ $(function () {
         $('#addressL').text(lang.homeAddress);
         $('#addressNumberL').text(lang.homeNumber);
         $('#documentNumberL').text(lang.documentNumber);
-        $('#documentEmissPlaceL').text(lang.emissionPlace);
+        $('#docEmissStateL').text(lang.docEmissState);
+        $('#docEmissCityL').text(lang.docEmissCity);
     }
 
     $('#buttonSubmit').on("click", (event) => {
-        if (!validateForm(inList)) {
+        if (!isAllValid(inList)) {
             event.preventDefault();
         } else {
             
@@ -77,7 +138,10 @@ $(function () {
 
     $('#randB').click((event) => {
         let objList = []
-        inList.each((i, obj) => {
+        inList
+        .filter('[required]')
+        .each((i, obj) => {
+            //objList.push($(obj).attr('id'));
             objList.push($(obj).val());
         })
         alert(JSON.stringify(objList));
