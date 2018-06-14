@@ -8,8 +8,9 @@
 
 ### Other thing
 
-I think the only interesting thing of this project are the autocomplete functions you can find in the util.js file and obviously if you want to copy it you are free to do!
-They are fully independent and the first param is on both a JQuery object, the second vary on the function.
+I think that one interesting thing of this project are the autocomplete functions you can find in the **util.js** file and obviously if you want to copy it you are free to do!
+They need *JQuery* as dependency and the file **customStyle.css**.
+The first param is on both a *JQuery* object, the second vary on the function.
 
 For the AJAX function is the url to connect that return the array to use, the other requires directly an array.
 
