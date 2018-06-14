@@ -270,7 +270,7 @@ function validationEvent(listObj) {
     });
 }
 
-function isAllValid(listObj) {
+/* function isAllValid(listObj) {
     let is_Valid = true;
     //let listNoReq = listObj;
     let listReq = listObj.filter('[required]');
@@ -279,11 +279,11 @@ function isAllValid(listObj) {
         
     }
 
-    /* listNoReq.each((i, e) => {
+    listNoReq.each((i, e) => {
         $(e).parent().addClass('has-success');
-    }); */
+    }); 
     return is_Valid;
-}
+} */
 
 function validateForm(listObj) {
     let isValid = true;
@@ -311,7 +311,7 @@ function validateForm(listObj) {
 
 function firstCharMatch(tryString, toMatch) {
     let thisMatch = true;
-
+    
     for (let a = 0; a < tryString.length; a++) {
         if (tryString[a].toUpperCase() !== toMatch[a].toUpperCase()) {
             thisMatch = false;
@@ -320,4 +320,12 @@ function firstCharMatch(tryString, toMatch) {
     }
 
     return thisMatch;
+}
+
+function isEnglish() {
+    return navigator.language === "en-US" || navigator.language === "en";
+}
+
+function isItalian() {
+    return navigator.language === "it" || navigator.language === "it-IT";
 }
