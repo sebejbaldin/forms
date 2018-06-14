@@ -37,14 +37,15 @@ $(function () {
         lang = enUS;
     loadLanguage();
 
-    birthState.on('input', () => {
-        if (birthState.val().length >= 3) {
+    birthState.on('input', (event, bypass) => {
+        if(!bypass) bypass = false;
+        if (bypass || birthState.val().length >= 3) {
             let temp = $('#birthThings > div');
-            if (!firstCharMatch(birthState.val(), 'italia') && onlyITA.birth === null) {
+            if ((bypass || !firstCharMatch(birthState.val(), 'italia')) && onlyITA.birth === null) {
                 onlyITA.birth = $(temp.get(1)).detach();
                 $(temp.get(2)).attr('class', 'col-sm-6');
                 inList = $(':input').not('button');
-            } else if (firstCharMatch(birthState.val(), 'italia') && onlyITA.birth !== null) {
+            } else if ((bypass || firstCharMatch(birthState.val(), 'italia')) && onlyITA.birth !== null) {
                 $(temp.get(1)).attr('class', 'col-sm-2');
                 $(temp.get(0)).after(onlyITA.birth);
                 loadLanguage();
@@ -54,16 +55,17 @@ $(function () {
         }
     });
 
-    docState.on('input', () => {
-        if (docState.val().length >= 3) {
+    docState.on('input', (event, bypass) => {
+        if(!bypass) bypass = false;
+        if (bypass || docState.val().length >= 3) {
             let temp = $('#docThings > div');
-            if (!firstCharMatch(docState.val(), 'italia') && onlyITA.docCity === null) {
+            if ((bypass || !firstCharMatch(docState.val(), 'italia')) && onlyITA.docCity === null) {
                 onlyITA.docCity = $(temp.get(3)).detach();
                 $(temp.get(0)).attr('class', 'col-sm-4');
                 $(temp.get(1)).attr('class', 'col-sm-4');
                 $(temp.get(2)).attr('class', 'col-sm-4');
                 inList = $(':input').not('button');
-            } else if (firstCharMatch(docState.val(), 'italia') && onlyITA.docCity !== null) {
+            } else if ((bypass || firstCharMatch(docState.val(), 'italia')) && onlyITA.docCity !== null) {
                 $(temp.get(0)).attr('class', 'col-sm-3');
                 $(temp.get(1)).attr('class', 'col-sm-2');
                 $(temp.get(2)).attr('class', 'col-sm-3');
@@ -75,12 +77,13 @@ $(function () {
         }
     });
     
-    residenceState.on('input', () => {
-        if (residenceState.val().length >= 3) {
-            if (!firstCharMatch(residenceState.val(), 'italia') && onlyITA.residence === null) {
+    residenceState.on('input', (event, bypass) => {
+        if(!bypass) bypass = false;
+        if (bypass || residenceState.val().length >= 3) {
+            if ((bypass || !firstCharMatch(residenceState.val(), 'italia')) && onlyITA.residence === null) {
                 onlyITA.residence = $('#toToggle').detach();
                 inList = $(':input').not('button');
-            } else if (firstCharMatch(residenceState.val(), 'italia') && onlyITA.residence !== null) {
+            } else if ((bypass || firstCharMatch(residenceState.val(), 'italia')) && onlyITA.residence !== null) {
                 $('#dependTo').after(onlyITA.residence);
                 loadLanguage();
                 inList = $(':input').not('button');
@@ -144,6 +147,9 @@ $(function () {
     $('#en_USLang').click((event) => {
         if (lang.language !== "en-US") {
             lang = enUS;
+            docState.trigger('input', true);
+            residenceState.trigger('input', true);
+            birthState.trigger('input', true);
             loadLanguage();
         }
     });
@@ -151,6 +157,9 @@ $(function () {
     $('#itLang').click((event) => {
         if (lang.language !== "it") {
             lang = it;
+            docState.trigger('input', true);
+            residenceState.trigger('input', true);
+            birthState.trigger('input', true);
             loadLanguage();
         }
     });
