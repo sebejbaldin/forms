@@ -29,18 +29,9 @@ $(function () {
         lang = it;
     } else if (isEnglish()) {
         lang = enUS;
-        layoutITA.isITA_Residence = false;
-        layoutITA.isITA_BirthPlace = false;
-        layoutITA.isITA_Document = false;
-        let temp = $('#docThings > div');
-        onlyITA.residence = $('#toToggle').detach();
-        onlyITA.birth = $($('#birthThings > div').get(1)).detach();
-        $($('#birthThings > div').get(1)).attr('class', 'col-sm-6');
-        onlyITA.docCity = $(temp.get(3)).detach();
-        $(temp.get(0)).attr('class', 'col-sm-4');
-        $(temp.get(1)).attr('class', 'col-sm-4');
-        $(temp.get(2)).attr('class', 'col-sm-4');
-        inList = $(':input').not('button');
+        remBirthCity();
+        remDocCity();
+        remResFields();
     } else
         lang = enUS;
     loadLanguage();
