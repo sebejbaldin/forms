@@ -34,13 +34,14 @@ $(function () {
         remResFields();
     } else
         lang = enUS;
+
     loadLanguage();
 
     birthState.on('input', () => {
         if (birthState.val().length >= 3) {
-            if ((!firstCharMatch(birthState.val(), 'italia')) && onlyITA.birth === null) {
+            if (!firstCharMatch(birthState.val(), 'ITALIA') && onlyITA.birth === null) {
                 remBirthCity();
-            } else if ((firstCharMatch(birthState.val(), 'italia')) && onlyITA.birth !== null) {
+            } else if (firstCharMatch(birthState.val(), 'ITALIA') && onlyITA.birth !== null) {
                 addBirthCity();
             }
         }
@@ -66,9 +67,9 @@ $(function () {
 
     docState.on('input', () => {
         if (docState.val().length >= 3) {
-            if ((!firstCharMatch(docState.val(), 'italia')) && onlyITA.docCity === null) {
+            if (!firstCharMatch(docState.val(), 'ITALIA') && onlyITA.docCity === null) {
                 remDocCity();
-            } else if ((firstCharMatch(docState.val(), 'italia')) && onlyITA.docCity !== null) {
+            } else if (firstCharMatch(docState.val(), 'ITALIA') && onlyITA.docCity !== null) {
                 addDocCity();
             }
         }
@@ -98,9 +99,9 @@ $(function () {
 
     residenceState.on('input', () => {
         if (residenceState.val().length >= 3) {
-            if ((!firstCharMatch(residenceState.val(), 'italia')) && onlyITA.residence === null) {
+            if (!firstCharMatch(residenceState.val(), 'ITALIA') && onlyITA.residence === null) {
                 remResFields();
-            } else if ((firstCharMatch(residenceState.val(), 'italia')) && onlyITA.residence !== null) {
+            } else if (firstCharMatch(residenceState.val(), 'ITALIA') && onlyITA.residence !== null) {
                 addResFields();
             }
         }
@@ -121,14 +122,14 @@ $(function () {
     }
 
     function loadLanguage() {
-        if (lang.language === "it") {
-            document.title = "Modulo Dati Capofamiglia";
+        if (lang.language === 'it') {
+            document.title = 'Modulo Dati Capofamiglia';
             $('#formTitle').text('Modulo Dati Capofamiglia');
-        } else if (lang.language === "en-US") {
-            document.title = "Householder Data Module";
+        } else if (lang.language === 'en-US') {
+            document.title = 'Householder Data Module';
             $('#formTitle').text('Householder Data Module');
         }
-        $("#documentTypeL").text(lang.documentType.title);
+        $('#documentTypeL').text(lang.documentType.title);
         $('#documentType').empty();
         for (let x = 0; x < getArrayLength(lang.documentType.options); x++) {
             $('#documentType').append(`<option value="${x}">${lang.documentType.options[x]}</option>`);
@@ -153,7 +154,7 @@ $(function () {
         $('#docEmissCityL').text(lang.docEmissCity);
     }
 
-    $('#buttonSubmit').on("click", (event) => {
+    $('#buttonSubmit').on('click', (event) => {
         if (!isAllValid(inList)) {
             event.preventDefault();
         } else {
@@ -173,7 +174,7 @@ $(function () {
     });
 
     $('#en_USLang').click((event) => {
-        if (lang.language !== "en-US") {
+        if (lang.language !== 'en-US') {
             lang = enUS;
             if (residenceState.val() === '' && layoutITA.isITA_Residence) {
                 remResFields();
@@ -192,7 +193,7 @@ $(function () {
     });
 
     $('#itLang').click((event) => {
-        if (lang.language !== "it") {
+        if (lang.language !== 'it') {
             lang = it;
             if (residenceState.val() === '' && !layoutITA.isITA_Residence) {
                 addResFields();
