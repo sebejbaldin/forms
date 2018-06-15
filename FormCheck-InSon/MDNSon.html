@@ -8,20 +8,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../customStyle.css" />
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../util.js"></script>
+    <script src="../it.js"></script>
+    <script src="../en_US.js"></script>
+    <script src="check-in-son.js"></script>
 </head>
 
 <body style="background-color: honeydew">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
-                <h2 id="formTitle">Modulo Dati Nominativo</h2>
+            <div class="col-sm-6 col-xs-12">
+                <h2 id="formTitle">Modulo Dati Accompagnatore</h2>
             </div>
-            <div class="col-sm-1 col-sm-offset-4">
+            <div class="col-sm-2 col-sm-offset-2 col-xs-4 col-xs-offset-2">
                 <button type="button" id="itLang" class="btn btn-default btn-block">
                     <span class="flag-icon flag-icon-it"></span>
                 </button>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2 col-xs-4">
                 <button type="button" id="en_USLang" class="btn btn-default btn-block">
                     <span class="flag-icon flag-icon-us"></span>
                 </button>
@@ -30,21 +36,18 @@
         <br>
         <form id="anagrafica">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="surname" id="surnameL">Cognome</label>
                         <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3">
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="nome" id="nomeL">Nome</label>
                         <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme">
                     </div>
                 </div>
-            </div>
-            <br>
-            <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
                         <label class="control-label" for="gender" id="genderL">Genere</label>
@@ -54,46 +57,64 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div class="row" id="birthThings">
+                <br>
+                <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="birthPlace" id="birthPlaceL">Luogo di Nascita</label>
-                        <input type="text" class="form-control" id="birthPlace" aria-describedby="birthPlace">
+                        <label class="control-label" for="birthState" id="birthStateL">Stato di Nascita</label>
+                        <input type="text" class="form-control" id="birthState" aria-describedby="birthState" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
+                        <label class="control-label" for="birthCity" id="birthCityL">Comune di Nascita</label>
+                        <input type="text" class="form-control" id="birthCity" aria-describedby="birthCity" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
                         <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
-                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate">
+                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate" required>
                     </div>
                 </div>
             </div>
             <div class="row" id="dependTo">
-                    <br>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
-                            <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship">
-                        </div>
+                <br>
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
+                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship" required>
                     </div>
-                    <div class="col-sm-3 autocomplete">
-                        <div class="form-group">
-                            <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
-                            <input type="text" class="form-control" id="residenceState" aria-describedby="residence">
-                        </div>
-                    </div>
-                    <div class="col-sm-5">
-                            <div class="form-group">
-                                <label class="control-label" for="address" id="addressL">Indirizzo di Casa</label>
-                                <input type="text" class="form-control" id="address" aria-describedby="address">
-                            </div>
-                        </div>
-                        <div class="col-sm-1">
-                            <div class="form-group">
-                                <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
-                                <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
-                            </div>
-                        </div>
                 </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
+                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence" autocomplete="off" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="toToggle">
+                <br>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
+                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off" required>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="form-group">
+                        <label class="control-label" for="address" id="addressL">Indirizzo di Casa</label>
+                        <input type="text" class="form-control" id="address" aria-describedby="address">
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
+                        <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
+                    </div>
+                </div>
+            </div>
             <br>
             <div class="row">
                 <div class="col-sm-3">
@@ -107,11 +128,6 @@
                 </div>
             </div>
         </form>
-        <script src="../node_modules/jquery/dist/jquery.js"></script>
-        <script src="../util.js"></script>
-        <script src="../it.js"></script>
-        <script src="../en_US.js"></script>
-        <script src="check-in-son.js"></script>
     </div>
 </body>
 
