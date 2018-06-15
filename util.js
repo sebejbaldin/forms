@@ -29,6 +29,7 @@ function submitForm(list) {
 function autocompleteWithAJAX(inputRef, urlReq, charMin) {
     var inputLenght;
     var currentFocus = -1;
+    inputRef.attr('autocomplete', 'off');
     inputRef.on('input', () => {
         inputLenght = inputRef.val().length;
         if (inputLenght <= 1) {
@@ -49,7 +50,7 @@ function autocompleteWithAJAX(inputRef, urlReq, charMin) {
                 }
             })
             .done(function (listRaw) {
-                var list = JSON.parse(listRaw);
+                let list = JSON.parse(listRaw);
                 closeAllLists();
                 let elem = $('<div></div>');
                 elem.attr('id', inputRef.attr('id') + "autocomplete-list");
@@ -149,6 +150,7 @@ function autocompleteWithAJAX(inputRef, urlReq, charMin) {
 function autocompleteWithArray(inputRef, array, charMin) {
     var inputLenght;
     var currentFocus = -1;
+    inputRef.attr('autocomplete', 'off');
     inputRef.on('input', () => {
         inputLenght = inputRef.val().length;
         if (inputLenght <= 1) {
