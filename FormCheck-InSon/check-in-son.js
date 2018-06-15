@@ -19,9 +19,9 @@ $(function () {
     autocompleteWithAJAX(city, 'http://localhost:8080/istes/autocompletecomuni');
     autocompleteWithAJAX(birthCity, 'http://localhost:8080/istes/autocompletecomuni');
     
-    if (navigator.language === "it")
+    if (isItalian())
         lang = it;
-    else if (navigator.language === "en-US") {
+    else if (isEnglish()) {
         lang = enUS;
         remBirthCity();
         remResFields();
@@ -127,7 +127,7 @@ $(function () {
             }
             loadLanguage();
         }
-    })
+    });
 
     $('#itLang').click((event) => {
         if (lang.language !== 'it') {
@@ -142,5 +142,5 @@ $(function () {
             }
             loadLanguage();
         }
-    })
+    });
 });
