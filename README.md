@@ -2,8 +2,8 @@
 
 ### How to use
 1. Go to the project root and click the green 'Clone or download' button, then copy the link
-2. Use `git clone [link]` to download the project
-3. Go into the project folder on your pc then run `npm install`
+2. Use `git clone https://github.com/sebejbaldin/forms.git` to download the project
+3. Type `cd forms` to go into the project folder then run `npm install`
 4. Open the page in a browser
 
 ### Other thing
