@@ -1,8 +1,8 @@
 $(function () {
     var inList = $(':input').not('button');
-    var residenceState = $('#residenceState');
-    var birthState = $('#birthState');
-    var birthCity = $('#birthCity');
+    var residenceState = $('#ResidenceState');
+    var birthState = $('#BirthState');
+    var birthCity = $('#BirthCity');
     var city = $('#city');
     var lang;
     var layoutITA = {
@@ -18,6 +18,7 @@ $(function () {
     autocompleteWithAJAX(birthState, 'http://localhost:8080/istes/autocompletestati');
     autocompleteWithAJAX(city, 'http://localhost:8080/istes/autocompletecomuni');
     autocompleteWithAJAX(birthCity, 'http://localhost:8080/istes/autocompletecomuni');
+
     
     if (isItalian())
         lang = it;
@@ -32,8 +33,8 @@ $(function () {
 
     function loadLanguage() {
         if (lang.language === 'it') {
-            document.title = 'Modulo Dati Altri';
-            $('#formTitle').text('Modulo Dati Altri');
+            document.title = 'Modulo Dati Accompagnatore';
+            $('#formTitle').text('Modulo Dati Accompagnatore');
         } else if (lang.language === 'en-US') {
             document.title = 'Other Data Module';
             $('#formTitle').text('Other Data Module');
@@ -41,9 +42,9 @@ $(function () {
         $("#nomeL").text(lang.name);
         $('#surnameL').text(lang.surname);
         $('#genderL').text(lang.gender.title);
-        $('#gender').empty();
+        $('#Gender').empty();
         for (let x = 0; x < getArrayLength(lang.gender.options); x++) {
-            $('#gender').append(`<option value="${x}">${lang.gender.options[x]}</option>`);
+            $('#Gender').append(`<option value="${lang.gender.options[x].toUpperCase()}">${lang.gender.options[x]}</option>`);
         };
         $('#birthStateL').text(lang.birthState);
         $('#birthCityL').text(lang.birthCity);
@@ -107,14 +108,11 @@ $(function () {
         onlyITA.birth = null;
     }
 
-
     $('#buttonSubmit').on("click", (event) => {
-        if (!validateForm(inList)) {
-            event.preventDefault();
-        }
+        
     });
 
-    $('#en_USLang').click((event) => {
+    $('#en_USLang').click(() => {
         if (lang.language !== 'en-US') {
             lang = enUS;
             if (residenceState.val() === '' && layoutITA.isITA_Residence) {
@@ -129,7 +127,7 @@ $(function () {
         }
     });
 
-    $('#itLang').click((event) => {
+    $('#itLang').click(() => {
         if (lang.language !== 'it') {
             lang = it;
             if (residenceState.val() === '' && !layoutITA.isITA_Residence) {

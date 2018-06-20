@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Modulo Dati Nominativo</title>
+    <title>Modulo Dati Accompagnatore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
@@ -34,26 +34,26 @@
             </div>
         </div>
         <br>
-        <form id="anagrafica">
+        <form id="anagrafica" action="http://localhost:47540/CheckIn/ListaAdd" method="POST">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="surname" id="surnameL">Cognome</label>
-                        <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3">
+                        <label class="control-label" for="Surname" id="surnameL">Cognome</label>
+                        <input type="text" class="form-control" name="Surname" id="Surname" aria-describedby="surnameL" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="nome" id="nomeL">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme">
+                        <label class="control-label" for="Name" id="nomeL">Nome</label>
+                        <input type="text" class="form-control" id="Name" name="Name" aria-describedby="nomeL" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="gender" id="genderL">Genere</label>
-                        <select class="form-control" id="gender">
-                            <option value="0">Maschio</option>
-                            <option value="1">Femmina</option>
+                        <label class="control-label" for="Gender" id="genderL">Genere</label>
+                        <select class="form-control" id="Gender" name="Gender" aria-describedby="genderL" required>
+                            <option value="Maschio">Maschio</option>
+                            <option value="Femmina">Femmina</option>
                         </select>
                     </div>
                 </div>
@@ -62,20 +62,21 @@
                 <br>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="birthState" id="birthStateL">Stato di Nascita</label>
-                        <input type="text" class="form-control" id="birthState" aria-describedby="birthState" autocomplete="off" required>
+                        <label class="control-label" for="BirthState" id="birthStateL">Stato di Nascita</label>
+                        <input type="text" class="form-control" id="BirthState" name="BirthState" aria-describedby="birthStateL" autocomplete="off"
+                            required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="birthCity" id="birthCityL">Comune di Nascita</label>
-                        <input type="text" class="form-control" id="birthCity" aria-describedby="birthCity" autocomplete="off">
+                        <label class="control-label" for="BirthCity" id="birthCityL">Comune di Nascita</label>
+                        <input type="text" class="form-control" id="BirthCity" name="BirthCity" aria-describedby="birthCityL" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
-                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate" required>
+                        <label class="control-label" for="BirthDate" id="birthDateL">Data di Nascita</label>
+                        <input type="date" class="form-control" id="BirthDate" name="BirthDate" aria-describedby="birthDateL" required>
                     </div>
                 </div>
             </div>
@@ -83,14 +84,15 @@
                 <br>
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
-                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship" required>
+                        <label class="control-label" for="Citizenship" id="citizenshipL">Cittadinanza</label>
+                        <input type="text" class="form-control" id="Citizenship" name="Citizenship" aria-describedby="citizenshipL" required>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
-                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence" autocomplete="off" required>
+                        <label class="control-label" for="ResidenceState" id="residenceStateL">Stato di Residenza</label>
+                        <input type="text" class="form-control" id="ResidenceState" name="ResidenceState" aria-describedby="residenceStateL" autocomplete="off"
+                            required>
                     </div>
                 </div>
             </div>
@@ -98,32 +100,35 @@
                 <br>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
-                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off" required>
+                        <label class="control-label" for="ResidenceCity" id="cityL">Comune di Residenza</label>
+                        <input type="text" class="form-control" id="ResidenceCity" name="ResidenceCity" aria-describedby="cityL" autocomplete="off"
+                            required>
                     </div>
                 </div>
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <label class="control-label" for="address" id="addressL">Indirizzo di Casa</label>
-                        <input type="text" class="form-control" id="address" aria-describedby="address">
+                        <label class="control-label" for="HomeAddress" id="addressL">Indirizzo di Casa</label>
+                        <input type="text" class="form-control" id="HomeAddress" name="HomeAddress" aria-describedby="addressL">
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-group">
-                        <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
-                        <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
+                        <label class="control-label" for="AddressNumber" id="addressNumberL">N.</label>
+                        <input type="text" class="form-control" id="AddressNumber" name="AddressNumber" aria-describedby="addressNumberL">
                     </div>
                 </div>
             </div>
-            <br>
             <div class="row">
-                <div class="col-sm-3">
+                <br>
+                <div class="col-sm-3 col-xs-6">
                     <button type="submit" class="btn btn-primary btn-block" id="buttonSubmit">
-                        <span class="glyphicon glyphicon-floppy-disk"></span> Salva</button>
+                        <span class="glyphicon glyphicon-floppy-disk"></span>
+                        Salva
+                    </button>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-6">
                     <button type="button" class="btn btn-primary btn-block" id="randB">
-                        rand
+                        Rand
                     </button>
                 </div>
             </div>
