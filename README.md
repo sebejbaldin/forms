@@ -1,10 +1,9 @@
 # Various Forms
 
 ### How to use
-1. Go to the project root and click the green 'Clone or download' button, then copy the link
-2. Use `git clone https://github.com/sebejbaldin/forms.git` to download the project
-3. Type `cd forms` to go into the project folder then run `npm install`
-4. Open the page in a browser
+1. Use `git clone https://github.com/sebejbaldin/forms.git` to download the project
+2. Type `cd forms` to go into the project folder then run `npm install`
+3. Open the page in a browser
 
 ### Other thing
 
