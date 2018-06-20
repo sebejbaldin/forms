@@ -1,10 +1,10 @@
 $(function () {
-    var residenceState = $('#residenceState');
-    var city = $('#city');
-    var docState = $('#docEmissState');
-    var docCity = $('#docEmissCity')
-    var birthState = $('#birthState');
-    var birthCity = $('#birthCity');
+    var residenceState = $('#ResidenceState');
+    var city = $('#ResidenceCity');
+    var docState = $('#DocEmissState');
+    var docCity = $('#DocEmissCity')
+    var birthState = $('#BirthState');
+    var birthCity = $('#BirthCity');
     var inList = $(':input').not('button');
     var lang;
     var layoutITA = {
@@ -130,16 +130,16 @@ $(function () {
             $('#formTitle').text('Householder Data Module');
         }
         $('#documentTypeL').text(lang.documentType.title);
-        $('#documentType').empty();
+        $('#DocumentType').empty();
         for (let x = 0; x < getArrayLength(lang.documentType.options); x++) {
-            $('#documentType').append(`<option value="${x}">${lang.documentType.options[x]}</option>`);
+            $('#DocumentType').append(`<option value="${lang.documentType.options[x].toUpperCase()}">${lang.documentType.options[x]}</option>`);
         };
         $("#nomeL").text(lang.name);
         $('#surnameL').text(lang.surname);
         $('#genderL').text(lang.gender.title);
-        $('#gender').empty();
+        $('#Gender').empty();
         for (let x = 0; x < getArrayLength(lang.gender.options); x++) {
-            $('#gender').append(`<option value="${x}">${lang.gender.options[x]}</option>`);
+            $('#Gender').append(`<option value="${lang.gender.options[x].toUpperCase()}">${lang.gender.options[x]}</option>`);
         };
         $('#birthStateL').text(lang.birthState);
         $('#birthCityL').text(lang.birthCity);
@@ -155,11 +155,7 @@ $(function () {
     }
 
     $('#buttonSubmit').on('click', (event) => {
-        if (!isAllValid(inList)) {
-            event.preventDefault();
-        } else {
 
-        }
     });
 
     $('#randB').click((event) => {

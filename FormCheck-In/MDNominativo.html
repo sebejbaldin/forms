@@ -34,26 +34,26 @@
             </div>
         </div>
         <br>
-        <form id="anagrafica">
+        <form id="anagrafica" action="http://localhost:47540/CheckIn/ListaAdd" method="POST">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="surname" id="surnameL">Cognome</label>
-                        <input type="text" class="form-control" name="surname" id="surname" aria-describedby="basic-addon3" required>
+                        <label class="control-label" for="Surname" id="surnameL">Cognome</label>
+                        <input type="text" class="form-control" name="Surname" id="Surname" aria-describedby="basic-addon3" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="nome" id="nomeL">Nome</label>
-                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="nOme" required>
+                        <label class="control-label" for="Name" id="nomeL">Nome</label>
+                        <input type="text" class="form-control" id="Name" name="Name" aria-describedby="nomeL" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="gender" id="genderL">Genere</label>
-                        <select class="form-control" id="gender" required>
-                            <option value="0">Maschio</option>
-                            <option value="1">Femmina</option>
+                        <label class="control-label" for="Gender" id="genderL">Genere</label>
+                        <select class="form-control" id="Gender" name="Gender" required>
+                            <option value="Uomo">Maschio</option>
+                            <option value="Donna">Femmina</option>
                         </select>
                     </div>
                 </div>
@@ -62,20 +62,20 @@
                 <br>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="birthState" id="birthStateL">Stato di Nascita</label>
-                        <input type="text" class="form-control" id="birthState" aria-describedby="birthState" autocomplete="off" required>
+                        <label class="control-label" for="BirthState" id="birthStateL">Stato di Nascita</label>
+                        <input type="text" class="form-control" id="BirthState" name="BirthState" aria-describedby="birthStateL" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="birthCity" id="birthCityL">Comune di Nascita</label>
-                        <input type="text" class="form-control" id="birthCity" aria-describedby="birthCity" autocomplete="off">
+                        <label class="control-label" for="BirthCity" id="birthCityL">Comune di Nascita</label>
+                        <input type="text" class="form-control" id="BirthCity" name="BirthCity" aria-describedby="birthCityL" autocomplete="off">
                     </div>
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="control-label" for="birthDate" id="birthDateL">Data di Nascita</label>
-                        <input type="date" class="form-control" id="birthDate" aria-describedby="birthDate" required>
+                        <label class="control-label" for="BirthDate" id="birthDateL">Data di Nascita</label>
+                        <input type="date" class="form-control" id="BirthDate" name="BirthDate" aria-describedby="birthDateL" required>
                     </div>
                 </div>
             </div>
@@ -83,14 +83,14 @@
                 <br>
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <label class="control-label" for="citizenship" id="citizenshipL">Cittadinanza</label>
-                        <input type="text" class="form-control" id="citizenship" aria-describedby="citizenship" required>
+                        <label class="control-label" for="Citizenship" id="citizenshipL">Cittadinanza</label>
+                        <input type="text" class="form-control" id="Citizenship" name="Citizenship" aria-describedby="citizenshipL" required>
                     </div>
                 </div>
                 <div class="col-sm-5">
                     <div class="form-group">
-                        <label class="control-label" for="residenceState" id="residenceStateL">Stato di Residenza</label>
-                        <input type="text" class="form-control" id="residenceState" aria-describedby="residence" autocomplete="off" required>
+                        <label class="control-label" for="ResidenceState" id="residenceStateL">Stato di Residenza</label>
+                        <input type="text" class="form-control" id="ResidenceState" name="ResidenceState" aria-describedby="residenceStateL" autocomplete="off" required>
                     </div>
                 </div>
             </div>
@@ -98,20 +98,20 @@
                 <br>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="city" id="cityL">Comune di Residenza</label>
-                        <input type="text" class="form-control" id="city" aria-describedby="city" autocomplete="off" required>
+                        <label class="control-label" for="ResidenceCity" id="cityL">Comune di Residenza</label>
+                        <input type="text" class="form-control" id="ResidenceCity" name="ResidenceCity" aria-describedby="cityL" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-7">
                     <div class="form-group">
-                        <label class="control-label" for="address" id="addressL">Indirizzo di Casa</label>
-                        <input type="text" class="form-control" id="address" aria-describedby="address">
+                        <label class="control-label" for="HomeAddress" id="addressL">Indirizzo di Casa</label>
+                        <input type="text" class="form-control" id="HomeAddress" name="HomeAddress" aria-describedby="addressL">
                     </div>
                 </div>
                 <div class="col-sm-1">
                     <div class="form-group">
-                        <label class="control-label" for="addressNumber" id="addressNumberL">N.</label>
-                        <input type="text" class="form-control" id="addressNumber" aria-describedby="addressNumber">
+                        <label class="control-label" for="AddressNumber" id="addressNumberL">N.</label>
+                        <input type="text" class="form-control" id="AddressNumber" name="AddressNumber" aria-describedby="addressNumberL">
                     </div>
                 </div>
             </div>
@@ -119,8 +119,8 @@
                 <br>
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label class="control-label" for="documentType" id="documentTypeL">Tipo Documento</label>
-                        <select class="form-control" id="documentType" aria-describedby="documentType" required>
+                        <label class="control-label" for="DocumentType" id="documentTypeL">Tipo Documento</label>
+                        <select class="form-control" id="DocumentType" name="DocumentType" aria-describedby="documentTypeL" required>
                             <option value="0">Carta d'Identità</option>
                             <option value="1">Carta d'Identità Elettr.</option>
                             <option value="2">Passaporto</option>
@@ -130,20 +130,20 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="form-group">
-                        <label class="control-label" for="documentNumber" id="documentNumberL">N. Documento</label>
-                        <input type="text" class="form-control" id="documentNumber" aria-describedby="documentNumber" required>
+                        <label class="control-label" for="DocumentNumber" id="documentNumberL">N. Documento</label>
+                        <input type="text" class="form-control" id="DocumentNumber" name="DocumentNumber" aria-describedby="DocumentNumberL" required>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label class="control-label" for="docEmissState" id="docEmissStateL">Stato di Emissione</label>
-                        <input type="text" class="form-control" id="docEmissState" aria-describedby="docEmissStateL" autocomplete="off" required>
+                        <label class="control-label" for="DocEmissState" id="docEmissStateL">Stato di Emissione</label>
+                        <input type="text" class="form-control" id="DocEmissState" name="DocEmissState" aria-describedby="DocEmissStateL" autocomplete="off" required>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label class="control-label" for="docEmissCity" id="docEmissCityL">Città di Emissione</label>
-                        <input type="text" class="form-control" id="docEmissCity" aria-describedby="docEmissCityL" autocomplete="off" required>
+                        <label class="control-label" for="DocEmissCity" id="docEmissCityL">Città di Emissione</label>
+                        <input type="text" class="form-control" id="DocEmissCity" name="DocEmissCity" aria-describedby="DocEmissCityL" autocomplete="off" required>
                     </div>
                 </div>
             </div>
