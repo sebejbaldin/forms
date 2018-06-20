@@ -69,7 +69,7 @@ function autocompleteWithAJAX(inputRef, urlReq, charMin) {
                 }
             })
             .fail(function () {
-                atome(inputRef, ["Qualcosa", "non", "ha", "funzionato", "come", "avrebbe", "dovuto."]);
+                autocompleteWithArray(inputRef, ["Qualcosa", "non", "ha", "funzionato", "come", "avrebbe", "dovuto."]);
             })
             .always(function () {
 
@@ -119,29 +119,14 @@ function autocompleteWithAJAX(inputRef, urlReq, charMin) {
     function removeActive(x) {
         /*a function to remove the "active" class from all autocomplete items:*/
         x.removeClass('autocomplete-active');
-        /* for (var i = 0; i < x.length; i++) {
-            x[i].classList.remove("autocomplete-active");
-        } */
     }
 
     function closeAllLists(elmnt) {
         //close all autocomplete lists in the document,
         //except the one passed as an argument:
         $(".autocomplete-items").remove();
-        /*
-        let x = $(".autocomplete-items");
-        if (elmnt == null && elmnt == undefined) {
-            x.remove();
-            currentFocus = -1;
-        } else {
-            for (var i = 0; i < getArrayLength(x); i++) {
-                if (elmnt != x[i] && elmnt != residenceState) {
-                    x[i].parent().remove(x[i]);
-                }
-            }
-        } */
     }
-    //execute a function when someone clicks in the document:
+    //close all list when someone clicks in the document:
     $('*').on("click", function () {
         closeAllLists();
     });
@@ -162,16 +147,18 @@ function autocompleteWithArray(inputRef, array, charMin) {
         elem.attr('id', inputRef.attr('id') + "autocomplete-list");
         elem.attr('class', 'autocomplete-items');
         inputRef.parent().append(elem);
-        for (let x = 0; x < getArrayLength(array); x++) {
-            let item = $('<div></div>');
-            item.append(`<strong>${array[x].substr(0, inputLenght)}</strong>${array[x].substr(inputLenght)}`);
-            //item.append(list[x]);
-            item.append(`<input type="hidden" value="${array[x]}">`);
-            item.on('click', () => {
-                inputRef.val(item.children('input').val());
-                closeAllLists();
-            })
-            elem.append(item);
+        for (let x = 0, y = 0; x < getArrayLength(array); x++) {
+            if (firstCharMatch(inputRef.val(), array[x])) {
+                let item = $('<div></div>');
+                item.append(`<strong>${array[x].substr(0, inputLenght)}</strong>${array[x].substr(inputLenght)}`);
+                //item.append(list[x]);
+                item.append(`<input type="hidden" value="${array[x]}">`);
+                item.on('click', () => {
+                    inputRef.val(item.children('input').val());
+                    closeAllLists();
+                })
+                elem.append(item);
+            }
         }
     })
 
@@ -313,7 +300,7 @@ function validateForm(listObj) {
 
 function firstCharMatch(tryString, toMatch) {
     let thisMatch = true;
-    
+
     for (let a = 0; a < tryString.length; a++) {
         if (tryString[a].toUpperCase() !== toMatch[a].toUpperCase()) {
             thisMatch = false;
