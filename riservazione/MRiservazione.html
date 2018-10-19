@@ -4,13 +4,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Modulo Riservazione</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../node_modules/flag-icon-css/css/flag-icon.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="../customStyle.css" />
     <script src="../node_modules/jquery/dist/jquery.js"></script>
-    <!-- <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
     <script src="../util.js"></script>
     <script src="language.js"></script>
     <script src="change.js"></script>
@@ -19,15 +18,15 @@
 <body style="background-color: aliceblue">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 col-xs-12">
                 <h2 id="formTitle">Modulo Riservazione</h2>
             </div>
-            <div class="col-sm-1 col-sm-offset-4">
+            <div class="col-sm-2 col-sm-offset-2 col-xs-4 col-xs-offset-2">
                 <button type="button" id="itLang" class="btn btn-default btn-block">
                     <span class="flag-icon flag-icon-it"></span>
                 </button>
             </div>
-            <div class="col-sm-1">
+            <div class="col-sm-2 col-xs-4">
                 <button type="button" id="en_USLang" class="btn btn-default btn-block">
                     <span class="flag-icon flag-icon-us"></span>
                 </button>
@@ -72,7 +71,7 @@
                 </div>
                 <div class="col-sm-2">
                     <label for="room" id="personNumL">N. Persone</label>
-                    <input type="number" class="form-control" id="PersonNum" aria-describedby="basic-addon3">
+                    <input type="number" class="form-control" id="personNum" aria-describedby="basic-addon3">
                 </div>
                 <div class="col-sm-2">
                     <label for="room" id="langL">Lingua</label>
@@ -80,7 +79,7 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            <div class="row" id="check">
                 <div class="col-sm-2">
                     <div class="checkbox">
                         <label id="invitedL">

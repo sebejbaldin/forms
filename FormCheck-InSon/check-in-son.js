@@ -3,7 +3,7 @@ $(function () {
     var residenceState = $('#ResidenceState');
     var birthState = $('#BirthState');
     var birthCity = $('#BirthCity');
-    var city = $('#city');
+    var city = $('#ResidenceCity');
     var lang;
     var layoutITA = {
         isITA_Residence: true,

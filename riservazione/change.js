@@ -7,13 +7,13 @@ $(function () {
     var lang;
 
     //alert(navigator.language);
-    if (navigator.language === "it")
+    if (isItalian())
         lang = resLang.italian;
-    else if (navigator.language === "en-US") {
+    else if (isEnglish())
         lang = resLang.english;
-        //alert('Lingua inglese caricata');
-    } else
+    else
         lang = resLang.english;
+
     loadLanguage();
 
 
@@ -35,13 +35,32 @@ $(function () {
         $('#personNumL').text(lang.personNum);
         $('#langL').text(lang.lang);
         $('*').remove('.lab');
-        invitedL.append('<p class="lab">' + lang.invite + '</p>');
-        soll1L.append('<p class="lab">' + lang.sollOne + '</p>');
-        soll2L.append('<p class="lab">' + lang.sollTwo + '</p>');
-        lockedL.append('<p class="lab">' + lang.locked + '</p>');
+        invitedL.append(`<p class="lab">${lang.invite}</p>`);
+        soll1L.append(`<p class="lab">${lang.sollOne}</p>`);
+        soll2L.append(`<p class="lab">${lang.sollTwo}</p>`);
+        lockedL.append(`<p class="lab">${lang.locked}</p>`);
     }
 
-    $('#buttonSubmit').on("click", (event) => {
+    function loadData() {
+        $('#code').val('4as84384a643a84f3a3df384377gdr#gfg47');
+        $('#riferimento').val('nksn44845a');
+        $('#nominativo').val('Wario Bianchi');
+        $('#email').val('wanchi@gmail.com');
+        $('#firstDay').val('2018-06-24');
+        $('#nDay').val(7);
+        $('#room').val('45b');
+        $('#personNum').val(3);
+        $('#lang').val('it');
+        $('#check input').val(['Soll1', 'locked']);
+        /* invitedL.children('input').val();
+        soll1L.append(`<p class="lab">${lang.sollOne}</p>`);
+        soll2L.append(`<p class="lab">${lang.sollTwo}</p>`);
+        lockedL.append(`<p class="lab">${lang.locked}</p>`); */
+    }
+
+    loadData();
+
+    $('#buttonSubmit').on('click', (event) => {
         if (!validateForm(inList)) {
             event.preventDefault();
         } else {
@@ -58,16 +77,16 @@ $(function () {
     });
 
     $('#en_USLang').click((event) => {
-        if (lang.language !== "en-US") {
+        if (lang.language !== 'en-US') {
             lang = resLang.english;
             loadLanguage();
         }
     });
 
     $('#itLang').click((event) => {
-        if (lang.language !== "it") {
+        if (lang.language !== 'it') {
             lang = resLang.italian;
             loadLanguage();
         }
     });
-})
+});
